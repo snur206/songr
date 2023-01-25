@@ -8,20 +8,12 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/")
 public class helloController {
-    @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+
+    @GetMapping("/")
     public String getHome(){
-        return "hello world";
+        return "hello.html";
     }
-    @ResponseBody
-    @GetMapping("/hello")
-    public String getHello() {
-        return "hello";
-    }
-    @GetMapping("/helloWorld")
-    public String getHelloWorld(){
-        return "hello";
-    }
+
     @ResponseBody
     @GetMapping("/capitalize/{word}")
     public String capitalize(@PathVariable String word) {
