@@ -1,25 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<link href="/css/style.css" rel="stylesheet">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Albums</title>
 </head>
 <body>
-<ul>Album 1: Beautiful Minds</ul>
-<li>Artist: Rod Wave</li>
-<li>Number of songs: 24</li>
-<li>Length: 68:20</li>
-<img th:src="@{static/img/RodWaveBM.png}"/>
-<ul>Album 2: Her Loss</ul>
-<li>Artist: Drake & 21 Savage</li>
-<li>Number of songs: 16</li>
-<li>Length: 60:33</li>
-<img th:src="@{static/img/herloss.png}"/>
-<ul>Album 3: An Evening with Silk Sonic </ul>
-<li>Artist: Silk Sonic</li>
-<li>Number of songs: 10</li>
-<li>Length: 31:19</li>
-<img th:src="@{static/img/silkSonic.png}"/>
+<main>
+    <ul>
+        <li th:each="album : ${albums}">
+            <div th:text="${album.title}"></div>
+            <img src="" alt="Placeholder"><img>
+            <div>
+                <p th:text="${album.artist}">Artist</p>
+                <p th:text="${album.songCount}">Song Count</p>
+                <p th:text="${album.length}">Length</p>
+            </div>
+        </li>
+    </ul>
+</main>
+
 </body>
 </html>
