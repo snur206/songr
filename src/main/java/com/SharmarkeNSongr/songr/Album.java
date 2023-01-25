@@ -3,12 +3,11 @@ package com.SharmarkeNSongr.songr;
 public class Album {
     private String title;
     private String artist;
-    private int songCount;
-    private double length;
+    private Integer songCount;
+    private Double length;
     private String imgUrl;
 
-
-    public Album(String title, String artist, int songCount, double length, String imgUrl) {
+    public Album(String title, String artist, Integer songCount, Double length, String imgUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
@@ -32,19 +31,19 @@ public class Album {
         this.artist = artist;
     }
 
-    public int getSongCount() {
+    public Integer getSongCount() {
         return songCount;
     }
 
-    public void setSongCount(int songCount) {
+    public void setSongCount(Integer songCount) {
         this.songCount = songCount;
     }
 
-    public double getLength() {
+    public Double getLength() {
         return length;
     }
 
-    public void setLength(double length) {
+    public void setLength(Double length) {
         this.length = length;
     }
 
@@ -55,15 +54,8 @@ public class Album {
     public void setImgUrl(String imgUrl) {
         this.imgUrl = imgUrl;
     }
-
     @Override
     public String toString() {
-        return "Album{" +
-                "title='" + title + '\'' +
-                ", artist='" + artist + '\'' +
-                ", songCount=" + songCount +
-                ", length=" + length +
-                ", imgUrl='" + imgUrl + '\'' +
-                '}';
-    }
+        return "Album Name: " + title + "from: " + artist + " has " + songCount + " songs. The length of the album in seconds is" + length + "seconds. Here is a link to the photo of the album" + imgUrl;}
+
 }
