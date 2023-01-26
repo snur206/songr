@@ -1,6 +1,15 @@
-package com.SharmarkeNSongr.songr;
+package com.SharmarkeNSongr.songr.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 
 public class Album {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) Long id;
     private String title;
     private String artist;
     private Integer songCount;
@@ -13,6 +22,18 @@ public class Album {
         this.songCount = songCount;
         this.length = length;
         this.imgUrl = imgUrl;
+    }
+
+    public Album() {
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {

@@ -1,16 +1,22 @@
 package com.SharmarkeNSongr.songr.Controller;
 
-import com.SharmarkeNSongr.songr.Album;
+import com.SharmarkeNSongr.songr.model.Album;
+import com.SharmarkeNSongr.songr.repositories.AlbumRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.view.RedirectView;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
 public class albumController {
+    @Autowired
+    AlbumRepository albumRepository;
+
     // get /albums
     @GetMapping("/albums")
     public String getAllAlbums(Model m){
@@ -31,5 +37,18 @@ public class albumController {
         m.addAttribute("albums", albums);
         // return to the template of album
         return "albums.html";
+    }
+    // post route to stores
+    @PostMapping("/albums")
+    // RedirectView
+    // Makes a GET request to the path given
+    // We are returning a RedirectView so that we can immediately retrieve and display the new store we just POSTed
+    // If you test with Postman, make sure to do a POST request with x-www-from-urlencoded selected in Body
+    public RedirectView addAlbum(String title,String artist, Integer songCount, Double length, String imgUrl ){
+        // create new store
+        Album newAlbum = new Album(title, artist, songCount, length, imgUrl);
+        // add it to the DB
+        AlbumRepository.save(newAlbum);
+        return new RedirectView("/albums");
     }
 }
