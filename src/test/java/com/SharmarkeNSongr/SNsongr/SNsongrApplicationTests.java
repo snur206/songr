@@ -1,10 +1,8 @@
 package com.SharmarkeNSongr.SNsongr;
 
-import com.SharmarkeNSongr.songr.Album;
+import com.SharmarkeNSongr.songr.model.Album;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.io.ObjectStreamClass;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
