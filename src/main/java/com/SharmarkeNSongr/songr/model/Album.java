@@ -1,9 +1,7 @@
 package com.SharmarkeNSongr.songr.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 
@@ -16,12 +14,27 @@ public class Album {
     private Double length;
     private String imgUrl;
 
+    @OneToMany(mappedBy = "songAppearing")
+    private List<Song> songInAlbum;
+
     public Album(String title, String artist, Integer songCount, Double length, String imgUrl) {
         this.title = title;
         this.artist = artist;
         this.songCount = songCount;
         this.length = length;
         this.imgUrl = imgUrl;
+    }
+
+    public List<Song> getSongs() {
+        return songInAlbum;
+    }
+
+    public void setSongs(List<Song> songs) {
+        this.songInAlbum = songs;
+    }
+
+    public List<Song> getSongInAlbum() {
+        return songInAlbum;
     }
 
     public Album() {
