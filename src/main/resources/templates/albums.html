@@ -18,6 +18,26 @@
             </div>
         </li>
     </ul>
+    <div>Songs:</div>
+    <ul th:each="song : &{album.song}">
+        <li th:text="${album.title}"></li>
+        <li th:text="${album.length}"></li>
+        <li th:text="${album.trackNumber}"></li>
+    </ul>
+    <form action="song.html" method="POST">
+        <fieldset>
+            <legend>Add a song to this album</legend>
+            <label>Song name</label>
+            <input type="text" name="title">
+            <label>Song duration</label>
+            <input type="text" name="length">
+            <label>Track Number</label>
+            <input type="text" name="trackNumber">
+            <input type="hidden" name="songAppearing" th:value="${album.song}">
+            <input type="submit" value="Add Song">
+
+        </fieldset>
+    </form>
 </main>
 <form action="/albums" method="POST">
     <fieldset>
