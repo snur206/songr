@@ -34,14 +34,14 @@ public class SongController {
     //Get one Song
     @GetMapping("/songs/{id}")
     public String getOneSong(@PathVariable Long id){
-        Song returnedSong = SongRepository.findById(id).orElseThrow();
+        Song returnedSong = songRepository.findById(id).orElseThrow();
         return "song.html";
     }
 
     @PostMapping("/songs")
-    public RedirectView addSong(String title, Double length, Integer trackNumber){
-        Album songAppearing = AlbumRepository.findByTitle(title);
-        Song newSong = new Song(title, length, trackNumber);
+    public RedirectView addSong(String title, Double length, Integer trackNumber, String albumTitle){
+        Album songAppearing = albumRepository.findByTitle(albumTitle);
+        Song newSong = new Song(title, length, trackNumber, songAppearing);
         songRepository.save(newSong);
         return new RedirectView("/albums");
     }
